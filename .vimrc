@@ -2,19 +2,23 @@ set nocompatible
 set encoding=utf-8
 set nu
 set ttyfast
-set cursorline
 set scrolloff=20
 set autoindent
 set cindent
 set bs=2
 set hlsearch
 set laststatus=2
-set t_Co=256
 set showmatch
-highlight ColorColumn ctermbg=7
+set t_Co=256
+set background=dark
 
+colo peachpuff
 syntax on
 filetype off
+
+" Must be placed adter colo statement
+highlight ColorColumn ctermbg=8
+highlight Visual ctermbg=0
 
 " Golang setup
 set rtp+=$GOROOT/misc/vim
@@ -33,6 +37,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
+Plugin 'maxmellon/vim-jsx-pretty'
 " Plugins must be added before this line
 call vundle#end()
 filetype plugin indent on
@@ -50,6 +55,9 @@ let g:syntastic_python_checkers = ['python3']
 " Prettier setup
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
+
+" JSX setup
+let g:vim_jsx_pretty_colorful_config = 1
 
 " Syntax highlighting
 let python_highlight_all=1

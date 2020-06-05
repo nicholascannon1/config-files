@@ -68,7 +68,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker node npm nvm pip python virtualenv pipenv go)
+plugins=(git docker node npm nvm pip python virtualenv pipenv golang)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,21 +103,21 @@ alias mycc="gcc-9 -Wall -Werror -pedantic"
 alias c="clear"
 alias tmux="tmux -2"
 alias vac="source env/bin/activate"
+alias nb2me="nvm use b2me"
+alias start_tomcat="/Library/Tomcat/bin/startup.sh"
+alias stop_tomcat="/Library/Tomcat/bin/shutdown.sh"
 
 # Git aliases
 alias gaa="git add ."
 alias gs="git status"
 alias gb="git branch"
-alias gc="git commit -m"
+alias gc="git checkout"
 alias gcm="git checkout master"
 
 # NVM stuff
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# fixes vim crashing issue
-export DYLD_FORCE_FLAT_NAMESPACE=1
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # displays virtualenv name on prompt
 VIRTUAL_ENV_DISABLE_PROMPT=

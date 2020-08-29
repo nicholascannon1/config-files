@@ -10,31 +10,45 @@ set hlsearch
 set showmatch
 set t_Co=256
 set background=dark
-set signcolumn=yes
 
+set signcolumn=yes
 highlight clear SignColumn
+
 highlight ColorColumn ctermbg=8
 
 syntax on
 
-" Vim-plug setup
+" **PLUGINS** 
 call plug#begin('~/.vim/plugged')
 
-" Plugins go here
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdcommenter'
+
+" File tree plugins
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+
+" Language plugins
 Plug 'scrooloose/syntastic'
 Plug 'tell-k/vim-autopep8'
+
+" JS Plugins
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'airblade/vim-gitgutter'
+
+" Status line pluings
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+" **END PLUGINS**
+
+" Airline theme
+let g:airline_theme='powerlineish'
 
 " Golang setup
 set rtp+=$GOROOT/misc/vim
@@ -100,7 +114,7 @@ noremap <C-l> <C-w>l
 " Sets dropdown menu background colour
 hi Pmenu ctermbg=DarkGray guibg=gray20
 
-" COC CONFIG 
+" **COC CONFIG**
 let g:coc_global_extensions = [
 	\ 'coc-pairs',
 	\ 'coc-tsserver',
@@ -266,4 +280,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-" END COC CONFIG
+" **END COC CONFIG**

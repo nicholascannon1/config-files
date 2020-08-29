@@ -11,11 +11,11 @@ set showmatch
 set t_Co=256
 set background=dark
 set signcolumn=yes
+
 highlight clear SignColumn
 highlight ColorColumn ctermbg=8
 
 syntax on
-filetype off
 
 " Vim-plug setup
 call plug#begin('~/.vim/plugged')

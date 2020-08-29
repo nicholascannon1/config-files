@@ -7,10 +7,11 @@ set autoindent
 set cindent
 set bs=2
 set hlsearch
-"set laststatus=2
 set showmatch
 set t_Co=256
 set background=dark
+set signcolumn=yes
+highlight clear SignColumn
 highlight ColorColumn ctermbg=8
 
 syntax on
@@ -23,6 +24,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/syntastic'
 Plug 'tell-k/vim-autopep8'
@@ -30,6 +32,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -129,12 +132,12 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+"if has("patch-8.1.1564")
+  "" Recently vim can merge signcolumn and number column into one
+  "set signcolumn=number
+"else
+  "set signcolumn=yes
+"endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

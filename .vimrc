@@ -10,13 +10,21 @@ set hlsearch
 set showmatch
 set t_Co=256
 set background=dark
-
 set signcolumn=yes
+set termguicolors
+
+" https://github.com/tyrannicaltoucan/vim-deep-space
+colorscheme deep-space
+
 highlight clear SignColumn
+hi ColorColumn ctermbg=8
 
-highlight ColorColumn ctermbg=8
-
-syntax on
+" Enable true color for tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " **PLUGINS** 
 call plug#begin('~/.vim/plugged')
@@ -28,7 +36,7 @@ Plug 'preservim/nerdcommenter'
 " File tree plugins
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 
 " Language plugins
@@ -48,7 +56,7 @@ call plug#end()
 " **END PLUGINS**
 
 " Airline theme
-let g:airline_theme='powerlineish'
+let g:airline_theme='deep_space'
 
 " Golang setup
 set rtp+=$GOROOT/misc/vim
@@ -126,6 +134,7 @@ let g:coc_global_extensions = [
 
 " Make the coc error messages a light red
 hi CocErrorSign  ctermfg=LightRed guifg=LightRed
+hi CocWarningSign  ctermfg=214 guifg=Orange
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -147,10 +156,10 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 "if has("patch-8.1.1564")
-  "" Recently vim can merge signcolumn and number column into one
-  "set signcolumn=number
+	"" Recently vim can merge signcolumn and number column into one
+	"set signcolumn=number
 "else
-  "set signcolumn=yes
+	"set signcolumn=yes
 "endif
 
 " Use tab for trigger completion with characters ahead and navigate.

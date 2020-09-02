@@ -1,3 +1,4 @@
+" **BASIC SETTINGS**
 set nocompatible
 set encoding=utf-8
 set nu
@@ -13,11 +14,11 @@ set background=dark
 set signcolumn=yes
 set termguicolors
 
-" https://github.com/tyrannicaltoucan/vim-deep-space
-colorscheme deep-space
-
 highlight clear SignColumn
 hi ColorColumn ctermbg=8
+
+" Sets dropdown menu background colour
+hi Pmenu ctermbg=DarkGray guibg=gray20
 
 " Enable true color for tmux
 if exists('+termguicolors')
@@ -25,70 +26,6 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-
-" **PLUGINS** 
-call plug#begin('~/.vim/plugged')
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdcommenter'
-
-" File tree plugins
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'ryanoasis/vim-devicons'
-Plug 'airblade/vim-gitgutter'
-
-" Language plugins
-Plug 'scrooloose/syntastic'
-Plug 'tell-k/vim-autopep8'
-
-" JS Plugins
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'prettier/vim-prettier'
-
-" Status line pluings
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-call plug#end()
-" **END PLUGINS**
-
-" Airline theme
-let g:airline_theme='deep_space'
-
-" Golang setup
-set rtp+=$GOROOT/misc/vim
-
-" NerdTree setup
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
-" Syntastic setup
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['python3']
-let g:syntastic_javascript_checkers = ['eslint']
-
-" Prettier setup
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
-
-" JSX setup
-let g:vim_jsx_pretty_colorful_config = 1
-
-" Syntax highlighting
-let python_highlight_all=1
-
-" Auto-pep8 setup
-let g:autopep8_max_line_length = 79
-let g:autopep8_on_save = 1 
-let g:autopep8_disable_show_diff=1
-
-" tells ctrlp to ignore files in the .gitignore 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Python PEP8 indentation
 au FileType,BufNewFile,BufRead *.py
@@ -118,9 +55,72 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+" ** END BASIC SETTINGS**
 
-" Sets dropdown menu background colour
-hi Pmenu ctermbg=DarkGray guibg=gray20
+" **PLUGINS** 
+call plug#begin('~/.vim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdcommenter'
+
+" File tree plugins
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+
+" Language plugins
+Plug 'scrooloose/syntastic'
+Plug 'tell-k/vim-autopep8'
+
+" JS Plugins
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'prettier/vim-prettier'
+
+" Status line pluings
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+" **END PLUGINS**
+
+" THEMES
+" https://github.com/tyrannicaltoucan/vim-deep-space
+colorscheme deep-space
+let g:airline_theme='deep_space'
+
+" NerdTree setup
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+" Syntastic setup
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['python3']
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Prettier setup
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
+
+" JSX setup
+let g:vim_jsx_pretty_colorful_config = 1
+
+" Syntax highlighting
+let python_highlight_all=1
+
+" Auto-pep8 setup
+let g:autopep8_max_line_length = 79
+let g:autopep8_on_save = 1 
+let g:autopep8_disable_show_diff=1
+
+" Golang setup
+set rtp+=$GOROOT/misc/vim
+
+" tells ctrlp to ignore files in the .gitignore 
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " **COC CONFIG**
 let g:coc_global_extensions = [
@@ -131,6 +131,8 @@ let g:coc_global_extensions = [
 	\ 'coc-eslint',
 	\ 'coc-json'
 	\ ]
+
+let g:coc_disable_startup_warning = 1
 
 " Make the coc error messages a light red
 hi CocErrorSign  ctermfg=LightRed guifg=LightRed

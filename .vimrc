@@ -17,23 +17,13 @@ set termguicolors
 highlight clear SignColumn
 hi ColorColumn ctermbg=8
 
-" Sets dropdown menu background colour
-hi Pmenu ctermbg=DarkGray guibg=gray20
-
-" Enable true color for tmux
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
 " Python PEP8 indentation
 au FileType,BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set textwidth=79 |
-    \ set expandtab | 
+    \ set expandtab |
     \ set fileformat=unix |
     \ set colorcolumn=79 |
 
@@ -48,7 +38,7 @@ au FileType, BufNewFile, BufRead *.js
 " Default settings for other filetypes
 set tabstop=2 |
 set softtabstop=2 |
-set shiftwidth=2 
+set shiftwidth=2
 
 " Map CTRL-hjkl to switch between vim panes
 noremap <C-h> <C-w>h
@@ -57,12 +47,15 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " ** END BASIC SETTINGS**
 
-" **PLUGINS** 
+" **PLUGINS**
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdcommenter'
+
+" Theme
+Plug 'joshdick/onedark.vim'
 
 " File tree plugins
 Plug 'scrooloose/nerdtree'
@@ -72,6 +65,7 @@ Plug 'airblade/vim-gitgutter'
 " Language plugins
 Plug 'scrooloose/syntastic'
 Plug 'tell-k/vim-autopep8'
+Plug 'sheerun/vim-polyglot'
 
 " JS Plugins
 Plug 'pangloss/vim-javascript'
@@ -86,9 +80,18 @@ call plug#end()
 " **END PLUGINS**
 
 " THEMES
-" https://github.com/tyrannicaltoucan/vim-deep-space
-colorscheme deep-space
-let g:airline_theme='deep_space'
+colorscheme onedark
+let g:airline_theme='onedark'
+
+" Sets dropdown menu background colour
+hi Pmenu ctermbg=DarkGray guibg=gray20
+
+" Enable true color for tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " NerdTree setup
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree
@@ -113,13 +116,13 @@ let python_highlight_all=1
 
 " Auto-pep8 setup
 let g:autopep8_max_line_length = 79
-let g:autopep8_on_save = 1 
+let g:autopep8_on_save = 1
 let g:autopep8_disable_show_diff=1
 
 " Golang setup
 set rtp+=$GOROOT/misc/vim
 
-" tells ctrlp to ignore files in the .gitignore 
+" tells ctrlp to ignore files in the .gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " **COC CONFIG**
@@ -129,12 +132,12 @@ let g:coc_global_extensions = [
 	\ 'coc-python',
 	\ 'coc-prettier',
 	\ 'coc-eslint',
-	\ 'coc-json'
-	\ ]
+	\ 'coc-json',
+	\ 'coc-go']
 
 let g:coc_disable_startup_warning = 1
 
-" Make the coc error messages a light red
+" change coc sign colors
 hi CocErrorSign  ctermfg=LightRed guifg=LightRed
 hi CocWarningSign  ctermfg=214 guifg=Orange
 

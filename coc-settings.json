@@ -1,0 +1,13 @@
+// coc settings template
+// place inside ~/.vim/coc-settings.json
+{
+	"python.jediEnabled": false,
+	"python.linting.enabled": true,
+	"python.pythonPath": "",
+	"javascript.suggestionActions.enabled": false,
+	"eslint.options": {
+		"parserOptions": {
+			"ecmaVersion": 8
+		}
+	}
+}

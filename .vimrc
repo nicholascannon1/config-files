@@ -11,13 +11,10 @@ set hlsearch
 set showmatch
 set t_Co=256
 set background=dark
-set signcolumn=yes
 set termguicolors
 
-highlight clear SignColumn
-hi ColorColumn ctermbg=8
-
 " Python PEP8 indentation
+hi ColorColumn ctermbg=8
 au FileType,BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -63,7 +60,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
 " Language plugins
-Plug 'scrooloose/syntastic'
 Plug 'tell-k/vim-autopep8'
 Plug 'sheerun/vim-polyglot'
 
@@ -83,9 +79,6 @@ call plug#end()
 colorscheme onedark
 let g:airline_theme='onedark'
 
-" Sets dropdown menu background colour
-hi Pmenu ctermbg=DarkGray guibg=gray20
-
 " Enable true color for tmux
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -98,14 +91,9 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NER
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
-" Syntastic setup
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['python3']
-let g:syntastic_javascript_checkers = ['eslint']
-
 " Prettier setup
 let g:prettier#autoformat = 0
+let g:prettier#exec_cmd_async = 1
 autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
 " JSX setup
@@ -160,12 +148,12 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-"if has("patch-8.1.1564")
-	"" Recently vim can merge signcolumn and number column into one
-	"set signcolumn=number
-"else
-	"set signcolumn=yes
-"endif
+if has("patch-8.1.1564")
+	" Recently vim can merge signcolumn and number column into one
+	set signcolumn=number
+else
+	set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

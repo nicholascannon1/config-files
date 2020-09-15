@@ -25,7 +25,7 @@ au FileType,BufNewFile,BufRead *.py
     \ set colorcolumn=79 |
 
 " JavaScript File setup
-au FileType, BufNewFile, BufRead *.js
+au FileType,BufNewFile,BufRead *.js
 		\	set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |
@@ -42,6 +42,10 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+
+" Make vim autorefresh files when changed in disk
+set autoread
+au CursorHold * checktime 
 " ** END BASIC SETTINGS**
 
 " **PLUGINS**
@@ -112,6 +116,8 @@ set rtp+=$GOROOT/misc/vim
 
 " tells ctrlp to ignore files in the .gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" disable ctrlp cache so new files show up
+let g:ctrlp_use_caching = 0
 
 " **COC CONFIG**
 let g:coc_global_extensions = [
@@ -121,13 +127,10 @@ let g:coc_global_extensions = [
 	\ 'coc-prettier',
 	\ 'coc-eslint',
 	\ 'coc-json',
+	\ 'coc-emmet',
 	\ 'coc-go']
 
 let g:coc_disable_startup_warning = 1
-
-" change coc sign colors
-hi CocErrorSign  ctermfg=LightRed guifg=LightRed
-hi CocWarningSign  ctermfg=214 guifg=Orange
 
 " TextEdit might fail if hidden is not set.
 set hidden

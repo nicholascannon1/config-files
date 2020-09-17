@@ -125,9 +125,6 @@ VIRTUAL_ENV_DISABLE_PROMPT=
 # disable shared history
 unsetopt share_history
 
-# custom prompt
-PROMPT='%m:%~$ '
-
 export GOPATH=$HOME/software/go
 
 # added by travis gem

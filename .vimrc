@@ -12,6 +12,7 @@ set showmatch
 set t_Co=256
 set background=dark
 set termguicolors
+set guifont=Monaco:h12
 
 " Python PEP8 indentation
 hi ColorColumn ctermbg=8
@@ -54,6 +55,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -121,7 +123,6 @@ let g:ctrlp_use_caching = 0
 
 " **COC CONFIG**
 let g:coc_global_extensions = [
-	\ 'coc-pairs',
 	\ 'coc-tsserver',
 	\ 'coc-python',
 	\ 'coc-prettier',

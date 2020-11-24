@@ -39,6 +39,12 @@ au FileType,BufNewFile,BufRead *.ts
 		\ set shiftwidth=2 |
 		\ set formatprg=prettier |
 		\ set syntax=typescript
+"
+" tsconfig.json is actually jsonc, help TypeScript set the correct filetype
+autocmd BufRead,BufNewFile tsconfig.json 
+		\	set filetype=jsonc |
+		\ set formatprg=prettier |
+		\ set syntax=json
 
 " Default settings for other filetypes
 set tabstop=2 |
@@ -54,6 +60,9 @@ noremap <C-l> <C-w>l
 " Make vim autorefresh files when changed in disk
 set autoread
 au CursorHold * checktime 
+
+" unset background color from colorscheme
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 " ** END BASIC SETTINGS**
 
 " **PLUGINS**
@@ -90,7 +99,7 @@ call plug#end()
 
 " THEMES
 colorscheme onedark
-let g:airline_theme='onedark'
+let g:airline_theme='powerlineish'
 
 " Enable true color for tmux
 if exists('+termguicolors')
@@ -295,3 +304,4 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " **END COC CONFIG**
+

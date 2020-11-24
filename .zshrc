@@ -103,8 +103,6 @@ alias mycc="gcc-9 -Wall -Werror -pedantic"
 alias c="clear"
 alias tmux="tmux -2"
 alias vac="source env/bin/activate"
-alias start_tomcat="/Library/Tomcat/bin/startup.sh"
-alias stop_tomcat="/Library/Tomcat/bin/shutdown.sh"
 alias jn="jupyter notebook"
 
 # Git aliases

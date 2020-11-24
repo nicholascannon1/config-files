@@ -3,11 +3,14 @@
 {
 	"python.jediEnabled": false,
 	"python.linting.enabled": true,
-	"python.pythonPath": "",
+	"python.pythonPath": "/Users/Nicholas/.pyenv/shims/python",
 	"javascript.suggestionActions.enabled": false,
 	"eslint.options": {
 		"parserOptions": {
 			"ecmaVersion": 8
-		}
+		},
+		"plugins": [
+			"@typescript-eslint"
+		]
 	}
 }

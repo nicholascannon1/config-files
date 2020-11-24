@@ -12,7 +12,6 @@ set showmatch
 set t_Co=256
 set background=dark
 set termguicolors
-set guifont=Monaco:h12
 
 " Python PEP8 indentation
 hi ColorColumn ctermbg=8
@@ -32,6 +31,14 @@ au FileType,BufNewFile,BufRead *.js
 		\ set shiftwidth=2 |
 		\ set formatprg=prettier |
 		\ set syntax=javascript
+
+" TS file setup
+au FileType,BufNewFile,BufRead *.ts
+		\	set tabstop=2 |
+		\ set softtabstop=2 |
+		\ set shiftwidth=2 |
+		\ set formatprg=prettier |
+		\ set syntax=typescript
 
 " Default settings for other filetypes
 set tabstop=2 |
@@ -100,7 +107,7 @@ let NERDTreeShowHidden=1
 " Prettier setup
 let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
-autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql,*.ts Prettier
 
 " JSX setup
 let g:vim_jsx_pretty_colorful_config = 1
@@ -154,7 +161,8 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 if has("patch-8.1.1564")
 	" Recently vim can merge signcolumn and number column into one
-	set signcolumn=number
+	"set signcolumn=number
+	set signcolumn=yes
 else
 	set signcolumn=yes
 endif

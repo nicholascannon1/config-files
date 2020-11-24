@@ -99,7 +99,7 @@ call plug#end()
 
 " THEMES
 colorscheme onedark
-let g:airline_theme='powerlineish'
+let g:airline_theme='minimalist'
 
 " Enable true color for tmux
 if exists('+termguicolors')
@@ -148,6 +148,17 @@ let g:coc_global_extensions = [
 	\ 'coc-go']
 
 let g:coc_disable_startup_warning = 1
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " TextEdit might fail if hidden is not set.
 set hidden

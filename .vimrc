@@ -39,7 +39,7 @@ au FileType,BufNewFile,BufRead *.ts
 		\ set shiftwidth=2 |
 		\ set formatprg=prettier |
 		\ set syntax=typescript
-"
+
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
 autocmd BufRead,BufNewFile tsconfig.json 
 		\	set filetype=jsonc |
@@ -61,8 +61,12 @@ noremap <C-l> <C-w>l
 set autoread
 au CursorHold * checktime 
 
-" unset background color from colorscheme
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+" Enable true color for tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 " ** END BASIC SETTINGS**
 
 " **PLUGINS**
@@ -97,16 +101,12 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " **END PLUGINS**
 
-" THEMES
+" THEME CONFIG
 colorscheme onedark
 let g:airline_theme='minimalist'
 
-" Enable true color for tmux
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+" unset background color from colorscheme
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
 " NerdTree setup
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree
@@ -116,7 +116,7 @@ let NERDTreeShowHidden=1
 " Prettier setup
 let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
-autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql,*.ts Prettier
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql,*.ts,*.tsx Prettier
 
 " JSX setup
 let g:vim_jsx_pretty_colorful_config = 1
@@ -151,7 +151,6 @@ let g:coc_disable_startup_warning = 1
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -179,13 +178,14 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-	" Recently vim can merge signcolumn and number column into one
+set signcolumn=yes
+
+"if has("patch-8.1.1564")
+	"" Recently vim can merge signcolumn and number column into one
 	"set signcolumn=number
-	set signcolumn=yes
-else
-	set signcolumn=yes
-endif
+"else
+	"set signcolumn=yes
+"endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

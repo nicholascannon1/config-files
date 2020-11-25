@@ -101,12 +101,16 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " **END PLUGINS**
 
-" THEME CONFIG
+" **THEME**
+" unset background color from colorscheme
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+
 colorscheme onedark
 let g:airline_theme='minimalist'
 
-" unset background color from colorscheme
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+" set selection highlight color
+hi Visual term=reverse cterm=reverse ctermfg=white
+" **END THEME**
 
 " NerdTree setup
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree

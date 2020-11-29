@@ -11,7 +11,7 @@ set hlsearch
 set showmatch
 set t_Co=256
 set background=dark
-set termguicolors
+syntax on
 
 " Python PEP8 indentation
 hi ColorColumn ctermbg=8
@@ -60,13 +60,6 @@ noremap <C-l> <C-w>l
 " Make vim autorefresh files when changed in disk
 set autoread
 au CursorHold * checktime 
-
-" Enable true color for tmux
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
 " ** END BASIC SETTINGS**
 
 " **PLUGINS**
@@ -102,14 +95,9 @@ call plug#end()
 " **END PLUGINS**
 
 " **THEME**
-" unset background color from colorscheme
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-
 colorscheme onedark
 let g:airline_theme='minimalist'
-
-" set selection highlight color
-hi Visual term=reverse cterm=reverse ctermfg=white
+highlight clear SignColumn
 " **END THEME**
 
 " NerdTree setup
@@ -182,14 +170,12 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=yes
-
-"if has("patch-8.1.1564")
-	"" Recently vim can merge signcolumn and number column into one
-	"set signcolumn=number
-"else
-	"set signcolumn=yes
-"endif
+if has("patch-8.1.1564")
+	" Recently vim can merge signcolumn and number column into one
+	set signcolumn=number
+else
+	set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

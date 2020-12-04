@@ -80,7 +80,6 @@ Plug 'airblade/vim-gitgutter'
 
 " Language plugins
 Plug 'tell-k/vim-autopep8'
-Plug 'sheerun/vim-polyglot'
 
 " JS Plugins
 Plug 'pangloss/vim-javascript'
@@ -94,11 +93,12 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " **END PLUGINS**
 
-" **THEME**
-colorscheme onedark
-let g:airline_theme='minimalist'
+" color scheme
+colorscheme peachpuff
 highlight clear SignColumn
-" **END THEME**
+
+" Airline setup
+let g:airline_theme='minimalist'
 
 " NerdTree setup
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree
@@ -150,6 +150,9 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" Change floating window colour
+hi CocFloating ctermbg=Black
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -230,7 +233,10 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Change CocHighlight colour
+"hi CocHighlightText ctermbg=Gray
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)

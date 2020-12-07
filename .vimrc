@@ -94,8 +94,7 @@ call plug#end()
 " **END PLUGINS**
 
 " color scheme
-colorscheme peachpuff
-highlight clear SignColumn
+colorscheme onedark
 
 " Airline setup
 let g:airline_theme='minimalist'
@@ -152,7 +151,7 @@ function! s:show_documentation()
 endfunction
 
 " Change floating window colour
-hi CocFloating ctermbg=Black
+"hi CocFloating ctermbg=Black
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -233,7 +232,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-"autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Change CocHighlight colour
 "hi CocHighlightText ctermbg=Gray

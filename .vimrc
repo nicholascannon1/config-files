@@ -29,7 +29,6 @@ au FileType,BufNewFile,BufRead *.js
 		\	set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |
-		\ set formatprg=prettier |
 		\ set syntax=javascript
 
 " TS file setup
@@ -37,13 +36,11 @@ au FileType,BufNewFile,BufRead *.ts
 		\	set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |
-		\ set formatprg=prettier |
 		\ set syntax=typescript
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
 autocmd BufRead,BufNewFile tsconfig.json 
 		\	set filetype=jsonc |
-		\ set formatprg=prettier |
 		\ set syntax=json
 
 " Default settings for other filetypes
@@ -84,7 +81,6 @@ Plug 'tell-k/vim-autopep8'
 " JS Plugins
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'prettier/vim-prettier'
 
 " Status line pluings
 Plug 'vim-airline/vim-airline'
@@ -103,11 +99,6 @@ let g:airline_theme='minimalist'
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-
-" Prettier setup
-let g:prettier#autoformat = 0
-let g:prettier#exec_cmd_async = 1
-autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql,*.ts,*.tsx Prettier
 
 " JSX setup
 let g:vim_jsx_pretty_colorful_config = 1
@@ -133,7 +124,6 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-python',
 	\ 'coc-prettier',
-	\ 'coc-eslint',
 	\ 'coc-json',
 	\ 'coc-emmet',
 	\ 'coc-go']

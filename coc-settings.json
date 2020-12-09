@@ -5,12 +5,9 @@
 	"python.linting.enabled": true,
 	"python.pythonPath": "/Users/Nicholas/.pyenv/shims/python",
 	"javascript.suggestionActions.enabled": false,
-	"eslint.options": {
-		"parserOptions": {
-			"ecmaVersion": 8
-		},
-		"plugins": [
-			"@typescript-eslint"
-		]
-	}
+	"prettier.singleQuote": true,
+	"prettier.arrowParens": "avoid",
+	"prettier.jsxBracketSameLine": true,
+	"prettier.trailingComma": "none",
+	"coc.preferences.formatOnSaveFiletypes": ["*"]
 }

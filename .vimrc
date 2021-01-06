@@ -112,7 +112,7 @@ let g:ctrlp_use_caching = 0
 " **COC CONFIG**
 let g:coc_global_extensions = [
 	\ 'coc-tsserver',
-	\ 'coc-python',
+	\ 'coc-pyright',
 	\ 'coc-prettier',
 	\ 'coc-json',
 	\ 'coc-emmet',

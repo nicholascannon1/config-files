@@ -39,7 +39,7 @@ au FileType,BufNewFile,BufRead *.ts
 		\ set syntax=typescript
 
 " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
-autocmd BufRead,BufNewFile tsconfig.json 
+autocmd BufRead,BufNewFile tsconfig.json
 		\	set filetype=jsonc |
 		\ set syntax=json
 
@@ -56,7 +56,7 @@ noremap <C-l> <C-w>l
 
 " Make vim autorefresh files when changed in disk
 set autoread
-au CursorHold * checktime 
+au CursorHold * checktime
 " ** END BASIC SETTINGS**
 
 " **PLUGINS**
@@ -72,14 +72,9 @@ Plug 'joshdick/onedark.vim'
 
 " File tree plugins
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
-" Language plugins
-Plug 'tell-k/vim-autopep8'
-
 " JS Plugins
-Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 
 " Status line pluings
@@ -105,11 +100,6 @@ let g:vim_jsx_pretty_colorful_config = 1
 
 " Syntax highlighting
 let python_highlight_all=1
-
-" Auto-pep8 setup
-let g:autopep8_max_line_length = 79
-let g:autopep8_on_save = 1
-let g:autopep8_disable_show_diff=1
 
 " Golang setup
 set rtp+=$GOROOT/misc/vim
@@ -143,6 +133,10 @@ endfunction
 " Change floating window colour
 "hi CocFloating ctermbg=Black
 
+" Change CocHighlight colour
+"hi CocHighlightText ctermbg=Gray
+
+" **RECOMMENDED COC CONFIG**
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -224,9 +218,6 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Change CocHighlight colour
-"hi CocHighlightText ctermbg=Gray
-
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -299,5 +290,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-" **END COC CONFIG**
-
+" **END RECOMMENDED COC CONFIG**

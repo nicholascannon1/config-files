@@ -1,13 +1,5 @@
 // coc settings template
 // place inside ~/.vim/coc-settings.json
 {
-	"python.jediEnabled": false,
-	"python.linting.enabled": true,
-	"python.pythonPath": "/Users/Nicholas/.pyenv/shims/python",
-	"javascript.suggestionActions.enabled": false,
-	"prettier.singleQuote": true,
-	"prettier.arrowParens": "avoid",
-	"prettier.jsxBracketSameLine": true,
-	"prettier.trailingComma": "none",
-	"coc.preferences.formatOnSaveFiletypes": ["*"]
+	"python.jediEnabled": false
 }

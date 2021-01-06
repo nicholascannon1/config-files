@@ -1,5 +1,0 @@
-// coc settings template
-// place inside ~/.vim/coc-settings.json
-{
-	"python.jediEnabled": false
-}

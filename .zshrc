@@ -123,8 +123,6 @@ VIRTUAL_ENV_DISABLE_PROMPT=
 # disable shared history
 unsetopt share_history
 
-export GOPATH=$HOME/software/go
-
 # added by travis gem
 [ -f /Users/Nicholas/.travis/travis.sh ] && source /Users/Nicholas/.travis/travis.sh
 

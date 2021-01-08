@@ -11,6 +11,7 @@ set hlsearch
 set showmatch
 set t_Co=256
 set background=dark
+set termguicolors
 syntax on
 
 " Python PEP8 indentation
@@ -68,14 +69,15 @@ Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 
 " Theme
-Plug 'joshdick/onedark.vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 " File tree plugins
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 
-" JS Plugins
+" Language Plugins
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'sheerun/vim-polyglot'
 
 " Status line pluings
 Plug 'vim-airline/vim-airline'
@@ -85,10 +87,11 @@ call plug#end()
 " **END PLUGINS**
 
 " color scheme
-colorscheme onedark
+let g:material_theme_style = 'darker'
+colorscheme material
 
 " Airline setup
-let g:airline_theme='minimalist'
+let g:airline_theme='material'
 
 " NerdTree setup
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree

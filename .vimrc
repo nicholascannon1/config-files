@@ -11,10 +11,10 @@ set hlsearch
 set showmatch
 set t_Co=256
 set background=dark
-set termguicolors
 syntax on
+colo peachpuff
 
-" Python PEP8 indentation
+" Python file setup
 hi ColorColumn ctermbg=8
 au FileType,BufNewFile,BufRead *.py
     \ set tabstop=4 |
@@ -25,7 +25,7 @@ au FileType,BufNewFile,BufRead *.py
     \ set fileformat=unix |
     \ set colorcolumn=79 |
 
-" JavaScript File setup
+" JavaScript file setup
 au FileType,BufNewFile,BufRead *.js
 		\	set tabstop=2 |
 		\ set softtabstop=2 |
@@ -44,7 +44,7 @@ autocmd BufRead,BufNewFile tsconfig.json
 		\	set filetype=jsonc |
 		\ set syntax=json
 
-" Default settings for other filetypes
+" Default file setup
 set tabstop=2 |
 set softtabstop=2 |
 set shiftwidth=2
@@ -68,9 +68,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 
-" Theme
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-
 " File tree plugins
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
@@ -86,12 +83,8 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " **END PLUGINS**
 
-" color scheme
-let g:material_theme_style = 'darker'
-colorscheme material
-
 " Airline setup
-let g:airline_theme='material'
+let g:airline_theme='powerlineish'
 
 " NerdTree setup
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree
@@ -111,6 +104,9 @@ set rtp+=$GOROOT/misc/vim
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 " disable ctrlp cache so new files show up
 let g:ctrlp_use_caching = 0
+
+" clears git gutter bg color
+highlight clear SignColumn
 
 " **COC CONFIG**
 let g:coc_global_extensions = [
@@ -134,7 +130,7 @@ function! s:show_documentation()
 endfunction
 
 " Change floating window colour
-"hi CocFloating ctermbg=Black
+hi CocFloating ctermbg=Black
 
 " Change CocHighlight colour
 "hi CocHighlightText ctermbg=Gray

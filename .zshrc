@@ -104,6 +104,7 @@ alias c="clear"
 alias tmux="tmux -2"
 alias vac="source env/bin/activate"
 alias jn="jupyter notebook"
+alias vim="nvim"
 
 # Git aliases
 alias gaa="git add ."

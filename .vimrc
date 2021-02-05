@@ -84,7 +84,7 @@ call plug#end()
 " **END PLUGINS**
 
 " Airline setup
-let g:airline_theme='powerlineish'
+let g:airline_theme='minimalist'
 
 " NerdTree setup
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.DS_Store', '\.swp'] "ignore files in NERDTree

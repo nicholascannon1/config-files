@@ -12,7 +12,6 @@ set showmatch
 set t_Co=256
 set background=dark
 syntax on
-colo peachpuff
 
 " Python file setup
 hi ColorColumn ctermbg=8
@@ -80,8 +79,14 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'joshdick/onedark.vim'
+
 call plug#end()
 " **END PLUGINS**
+
+" Theme setup
+colo onedark
+hi Normal guibg=NONE ctermbg=NONE
 
 " Airline setup
 let g:airline_theme='minimalist'
@@ -130,7 +135,7 @@ function! s:show_documentation()
 endfunction
 
 " Change floating window colour
-hi CocFloating ctermbg=Black
+"hi CocFloating ctermbg=Black
 
 " Change CocHighlight colour
 "hi CocHighlightText ctermbg=Gray
